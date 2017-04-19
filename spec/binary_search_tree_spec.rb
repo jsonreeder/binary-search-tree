@@ -47,6 +47,14 @@ describe 'BinarySearchTree' do
       subject.insert(highest_node)
       expect(subject.root.right.right.val).to eq(11)
     end
+
+    it 'can handle duplicates' do
+      subject.insert(new_node)
+      subject.insert(higher_node)
+      subject.insert(higher_node)
+
+      expect(subject.root.right.right.val).to eq(10)
+    end
   end
 
   describe '#find' do
