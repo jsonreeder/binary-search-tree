@@ -11,7 +11,7 @@ class BinarySearchTree
   end
 
   def insert(el)
-    @root = el if @root.val.nil?
+    @root.val.nil? ? @root = el : @root.insert(el)
   end
 
   def delete(el)

@@ -6,4 +6,8 @@ class BSTNode
     @left = nil
     @right = nil
   end
+
+  def insert(el)
+    el.val < val ? @left = el : @right = el
+  end
 end

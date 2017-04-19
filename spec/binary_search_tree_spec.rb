@@ -3,6 +3,8 @@ require 'binary_search_tree'
 describe 'BinarySearchTree' do
   subject { BinarySearchTree.new }
   let(:new_node) { BSTNode.new(9) }
+  let(:lower_node) { BSTNode.new(8) }
+  let(:higher_node) { BSTNode.new(10) }
 
   it 'initializes with a root node' do
     expect(subject).to respond_to(:root)
@@ -12,9 +14,23 @@ describe 'BinarySearchTree' do
     expect(subject).to respond_to(:insert)
   end
 
-  it 'inserts an item' do
-    subject.insert(new_node)
+  context 'when inserting an item' do
+    it 'inserts as root node when appropriate' do
+      subject.insert(new_node)
+      expect(subject.root.val).to eq(9)
+    end
 
-    expect(subject.root.val).to eq(9)
+    it 'inserts to the left when appropriate' do
+      subject.insert(new_node)
+      subject.insert(lower_node)
+      expect(subject.root.left.val).to eq(8)
+    end
+
+    it 'inserts to the left when appropriate' do
+      subject.insert(new_node)
+      subject.insert(higher_node)
+      expect(subject.root.right.val).to eq(10)
+    end
   end
+
 end
