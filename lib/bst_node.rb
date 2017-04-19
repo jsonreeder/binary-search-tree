@@ -8,7 +8,11 @@ class BSTNode
   end
 
   def insert(el)
-    if el.val < val
+    if val.nil?
+      @val = el.val
+      @left = el.left
+      @right = el.right
+    elsif el.val < val
       @left.nil? ? @left = el : @left.insert(el)
     else
       @right.nil? ? @right = el : @right.insert(el)
