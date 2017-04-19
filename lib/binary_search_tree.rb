@@ -7,7 +7,8 @@ class BinarySearchTree
     @root = BSTNode.new
   end
 
-  def find(el)
+  def find(search_val)
+    @root.find(search_val)
   end
 
   def insert(el)

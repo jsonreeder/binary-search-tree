@@ -49,4 +49,30 @@ describe 'BinarySearchTree' do
     end
   end
 
+  describe '#find' do
+    it 'finds the root' do
+      subject.insert(new_node)
+      expect(subject.find(9)).to be true
+    end
+
+    it 'returns false for missing elements' do
+      subject.insert(new_node)
+      expect(subject.find(11)).to be false
+    end
+
+    it 'finds elements one layer down' do
+      subject.insert(new_node)
+      subject.insert(lower_node)
+      subject.insert(lowest_node)
+      expect(subject.find(7)).to be true
+    end
+
+    it 'finds elements two layers down' do
+      subject.insert(new_node)
+      subject.insert(higher_node)
+      subject.insert(highest_node)
+      expect(subject.find(11)).to be true
+    end
+  end
+
 end
