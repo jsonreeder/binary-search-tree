@@ -18,7 +18,10 @@ class BinarySearchTree
   end
 
   def delete(delete_val)
-    return nil unless find(delete_val)
+    node_to_delete = find_node(delete_val)
+    parent = find_parent(node_to_delete)
+    return nil unless parent
+    parent.delete_child(delete_val)
   end
 
   def is_balanced?
@@ -37,5 +40,9 @@ class BinarySearchTree
 
   def find_node(search_val)
     @root.find(search_val)
+  end
+
+  def find_parent(node)
+    find_node(node.val)
   end
 end

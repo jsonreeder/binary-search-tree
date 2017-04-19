@@ -30,4 +30,28 @@ class BSTNode
       nil
     end
   end
+
+  def delete_child(delete_val)
+    child = which_child(delete_val)
+    if child == 'left'
+      @left = nil
+    elsif child == 'right'
+      @right = nil
+    else
+      nil
+    end
+  end
+
+  private
+
+  def which_child(val)
+    if @left && @left.val == val
+      'left'
+    elsif @right && @right.val == val
+      'right'
+    else
+      nil
+    end
+  end
+
 end

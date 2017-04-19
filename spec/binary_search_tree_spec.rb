@@ -1,4 +1,5 @@
 require 'binary_search_tree'
+require 'byebug'
 
 describe 'BinarySearchTree' do
   subject { BinarySearchTree.new }
@@ -84,12 +85,15 @@ describe 'BinarySearchTree' do
   end
 
   describe '#delete' do
-    it 'removes childless nodes' do
+    it 'removes childless nodes two layers down' do
       subject.insert(new_node)
       subject.insert(higher_node)
-      subject.delete(10)
-      expect(subject.find(10)).to be false
+      subject.insert(highest_node)
+      subject.delete(11)
+      expect(subject.find(11)).to be false
     end
+
+    it 'removes childless nodes one layer down'
 
     context 'when a node has one child' do
       it 'deletes that node'
