@@ -1,5 +1,10 @@
+require 'bst_node'
+
 class BinarySearchTree
+  attr_accessor :root
+
   def initialize
+    @root = BSTNode.new
   end
 
   def find(el)
@@ -21,5 +26,5 @@ class BinarySearchTree
   end
 
   def depth
-  end 
+  end
 end
