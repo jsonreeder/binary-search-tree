@@ -2,11 +2,11 @@ require 'binary_search_tree'
 
 describe 'BinarySearchTree' do
   subject { BinarySearchTree.new }
-  let(:new_node) { BSTNode.new(9) }
-  let(:lower_node) { BSTNode.new(8) }
-  let(:higher_node) { BSTNode.new(10) }
-  let(:lowest_node) { BSTNode.new(7) }
-  let(:highest_node) { BSTNode.new(11) }
+  let(:new_node) { 9 }
+  let(:lower_node) { 8 }
+  let(:higher_node) { 10 }
+  let(:lowest_node) { 7 }
+  let(:highest_node) { 11 }
 
   it 'initializes with a root node' do
     expect(subject).to respond_to(:root)
@@ -81,6 +81,26 @@ describe 'BinarySearchTree' do
       subject.insert(highest_node)
       expect(subject.find(11)).to be true
     end
+  end
+
+  describe '#delete' do
+    it 'removes childless nodes' do
+      subject.insert(new_node)
+      subject.insert(higher_node)
+      subject.delete(10)
+      expect(subject.find(10)).to be false
+    end
+
+    context 'when a node has one child' do
+      it 'deletes that node'
+      it 'promotes the child to take its place'
+    end
+
+    context 'when a node has two children' do
+      it 'deletes that node'
+      it 'promotes the largest child from left subtree to take its place'
+    end
+
   end
 
 end

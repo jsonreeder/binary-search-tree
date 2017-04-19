@@ -21,13 +21,13 @@ class BSTNode
 
   def find(search_val)
     if val == search_val
-      true
+      self
     elsif search_val < val && @left
       @left.find(search_val)
     elsif search_val > val && @right
       @right.find(search_val)
     else
-      false
+      nil
     end
   end
 end

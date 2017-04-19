@@ -8,14 +8,17 @@ class BinarySearchTree
   end
 
   def find(search_val)
-    @root.find(search_val)
+    found_node = find_node(search_val)
+    !!found_node
   end
 
-  def insert(el)
-    @root.insert(el)
+  def insert(insert_val)
+    new_node = BSTNode.new(insert_val)
+    @root.insert(new_node)
   end
 
-  def delete(el)
+  def delete(delete_val)
+    return nil unless find(delete_val)
   end
 
   def is_balanced?
@@ -28,5 +31,11 @@ class BinarySearchTree
   end
 
   def depth
+  end
+
+  private
+
+  def find_node(search_val)
+    @root.find(search_val)
   end
 end
