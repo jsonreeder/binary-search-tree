@@ -5,6 +5,8 @@ describe 'BinarySearchTree' do
   let(:new_node) { BSTNode.new(9) }
   let(:lower_node) { BSTNode.new(8) }
   let(:higher_node) { BSTNode.new(10) }
+  let(:lowest_node) { BSTNode.new(7) }
+  let(:highest_node) { BSTNode.new(11) }
 
   it 'initializes with a root node' do
     expect(subject).to respond_to(:root)
@@ -30,6 +32,20 @@ describe 'BinarySearchTree' do
       subject.insert(new_node)
       subject.insert(higher_node)
       expect(subject.root.right.val).to eq(10)
+    end
+
+    it 'creates a new level left when appropriate' do
+      subject.insert(new_node)
+      subject.insert(lower_node)
+      subject.insert(lowest_node)
+      expect(subject.root.left.left.val).to eq(7)
+    end
+
+    it 'creates a new level right when appropriate' do
+      subject.insert(new_node)
+      subject.insert(higher_node)
+      subject.insert(highest_node)
+      expect(subject.root.right.right.val).to eq(11)
     end
   end
 
